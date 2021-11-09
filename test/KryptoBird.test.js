@@ -48,10 +48,12 @@ contract("KryptoBird", (accounts) => {
             const totalSupply = await contract.totalSupply();
             let result = [];
             let KryptoBird;
-            for (let i = 1; i <= totalSupply; i++) {
-              KryptoBird = await contract.kryptoBirdz(i - 1);
+            for (let i = 0; i < totalSupply; i++) {
+              KryptoBird = await contract.kryptoBirdz(i);
               result.push(KryptoBird);
             }
+            let expected = ['https...1', 'https...2', 'https...3', 'https...4'];
+            assert.equal(result.join(','), expected.join(','));
         })
         
     })
